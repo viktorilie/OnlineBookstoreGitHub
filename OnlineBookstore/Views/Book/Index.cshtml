@@ -1,0 +1,136 @@
+﻿@model IEnumerable<OnlineBookstore.Data.Entities.Book>
+@{
+    ViewData["Title"] = "Index";
+
+}
+
+<h1 class="bg-dark text-white text-center p-3">Bookstore List</h1>
+<div class="container-fluid">
+    <div class="row">
+
+        <div class="col-12 col-md-12">
+            <a asp-action="Create" class="btn btn-success m-3" style="float:right"> <i class="fas fa-google-plus"></i> Create</a>
+        </div>
+    </div>
+</div>
+
+
+<div class="custom-container">
+
+    <table id="bookdataTable" class="table table-striped row-border" style="width:100%">
+        <thead class="thead-dark">
+            <tr>
+                <th>Book Cover</th>
+                <th>Title</th>
+                <th>Author</th>
+                <th>Year of Issue</th>
+                <th>Pages</th>
+                <th>Genre</th>
+                <th>Category</th>
+                <th>Price</th>
+                <th>Book Type</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+    </table>
+
+</div>
+
+
+
+
+@section Scripts {
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var table = $("#BookDataTable").DataTable({
+                ordering:true,
+                ajax: {
+                    url: "/Book/FillBookDataTable",
+                    type: "GET",
+                    datatype: "json"//,
+                    //success: function (data) {
+                    //console.log(data);
+                    //},
+                        //error: function () {
+                      //  alert("error");
+                    //    }
+
+                },
+
+                columns: [
+                    {
+                        "data": "photoURL",
+                        "render": function (data) {
+                            return '<img src="images/' + data + '"width="100"/>';
+                        }
+                    },
+
+                    {
+                        "data": "title",
+                        "autoWidth": true
+                    },
+
+                    {
+                        "data": "authorName",
+                        "autoWidth": true
+                    },
+                    {
+                        data: "yearOfIssue",
+                        render: function (data, type, row) {
+                            if (type === "sort" || type === "type") {
+                                return data;
+                            }
+                            return moment(data).format("DD/MM/YYYY");
+                        }
+                    },
+
+                    {
+                        "data": "numberOfPages",
+                        "autoWidth": true
+                    },
+                    {
+                        "data": "genre",
+                        "autoWidth": true
+                    },
+                    {
+                        "data": "categoryName",
+                        "autoWidth": true
+                    },
+                    {
+                        "data": "price",
+                        "autowidth": true
+                    },
+                    {
+                        "data": "booktype",
+                        "autoWidth":true
+                    },
+                    {
+                        data: 'id',
+                        render: function (data) {
+                            var editUrl = '@Url.Action("Edit","Books")/' + data;
+                            var detailsUrl = '@Url.Action("Details","Books")/' + data;
+                            var deleteUrl = '@Url.Action("Delete","Books")/' + data;
+                            return '<a href="' + editUrl + '"class="table-action-btn btn btn-block btn-primary"><i class="fas fa-edit"></i> &nbsp; Edit</a>' +
+                                 '<a  href="' + detailsUrl + '"class="table-action-btn btn btn-block btn-info"><i class="fas fa-info-circle"></i> &nbsp;Details</a>' +
+                                 '<a href="' + deleteUrl + '"class="table-action-btn btn btn-block btn-danger"><i class="fas fa-trash-alt"></i> &nbsp; Delete </a>'; 
+                        },
+
+
+                        width: "150px"
+                    }
+                ]
+
+            });
+        });
+
+       
+
+        
+
+    </script>
+
+}
+
+
+
+
