@@ -435,3 +435,4 @@ C:\Users\vikto\Downloads\OnlineBookstore\OnlineBookstore\OnlineBookstore\obj\Deb
 C:\Users\vikto\Downloads\OnlineBookstore\OnlineBookstore\OnlineBookstore\obj\Debug\netcoreapp3.1\OnlineBookstore.csprojAssemblyReference.cache
 C:\Users\vikto\Downloads\OnlineBookstore\OnlineBookstore\OnlineBookstore\obj\Debug\netcoreapp3.1\Razor\Views\User\Index.cshtml.g.cs
 C:\Users\vikto\Downloads\OnlineBookstore\OnlineBookstore\OnlineBookstore\obj\Debug\netcoreapp3.1\Razor\Views\User\Create.cshtml.g.cs
+C:\Users\vikto\Downloads\OnlineBookstore\OnlineBookstore\OnlineBookstore\obj\Debug\netcoreapp3.1\Razor\Views\User\Edit.cshtml.g.cs
